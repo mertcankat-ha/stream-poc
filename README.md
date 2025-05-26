@@ -1,50 +1,46 @@
-# Welcome to your Expo app 👋
+# Chat POC Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a proof of concept chat application using Stream Chat and React Native with Expo.
 
-## Get started
+## Setup Instructions
 
-1. Install dependencies
+### Stream Chat API Setup
 
-   ```bash
+1. Create an account on [Stream](https://getstream.io/) if you don't have one already
+2. Create a new Stream Chat application in the Stream dashboard
+3. Get your API key from the Stream dashboard
+4. Generate a user token for testing. You can use Stream's [token generator](https://getstream.io/chat/docs/react-native/tokens_and_authentication/?language=javascript)
+
+### Configuration
+
+1. Copy `chat.config.template.ts` to `chat.config.ts`:
+   ```
+   cp chat.config.template.ts chat.config.ts
+   ```
+
+2. Edit `chat.config.ts` and replace the placeholder values with your actual Stream API credentials:
+   ```typescript
+   export const chatApiKey = "YOUR_STREAM_API_KEY"; // From Stream dashboard
+   export const chatUserId = "YOUR_USER_ID";        // Any user ID you want to use
+   export const chatUserName = "YOUR_USER_NAME";    // Name for the user
+   export const chatUserToken = "YOUR_USER_TOKEN";  // Generated token for this user
+   ```
+
+### Running the Application
+
+1. Install dependencies:
+   ```
    npm install
    ```
 
-2. Start the app
-
-   ```bash
-   npx expo start
+2. Start the Expo development server:
+   ```
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+3. Follow the instructions in the terminal to run the app on your device or emulator
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Important Notes
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Make sure to add `chat.config.ts` to your `.gitignore` file to avoid committing your API keys
+- For production use, you should implement proper user authentication and token generation on your backend
